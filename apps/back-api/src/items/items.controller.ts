@@ -8,11 +8,13 @@ import {
   Query,
 } from '@nestjs/common';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { ApiTags } from '@nestjs/swagger';
 import { ItemsService } from './items.service';
 import { AddItemDto } from './dtos/add-item.dto';
 import { UpdateItemDto } from './dtos/update-item.dto';
 import { ItemDto } from './dtos/item.dto';
 
+@ApiTags('Items')
 @Controller('items')
 export class ItemsController {
   constructor(private itemsService: ItemsService) {}

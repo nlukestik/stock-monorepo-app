@@ -5,6 +5,11 @@ import { CategoriesService } from 'src/categories/categories.service';
 import { Item } from './item.entity';
 import { AddItemDto } from './dtos/add-item.dto';
 
+const DEFAULT_NEW_ITEM: Partial<AddItemDto> = {
+  cost: 0,
+  stock: 0,
+};
+
 @Injectable()
 export class ItemsService {
   constructor(
@@ -12,11 +17,13 @@ export class ItemsService {
     private categoriesService: CategoriesService,
   ) {}
 
-  async add({ categoryId, ...data }: AddItemDto) {
+  async add({ categoryId, cost, ...data }: AddItemDto) {
     const category = await this.categoriesService.findOne(categoryId);
     Object.assign(data, { category });
 
-    const item = this.itemsRepository.create(data);
+    const finalData = { ...DEFAULT_NEW_ITEM, ...data };
+
+    const item = this.itemsRepository.create(finalData);
 
     return this.itemsRepository.save(item);
   }
