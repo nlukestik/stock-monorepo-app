@@ -50,4 +50,10 @@ export class ItemsService {
     Object.assign(item, attrs);
     return this.itemsRepository.save(item);
   }
+
+  async delete(id: number) {
+    const item = await this.findOne(id);
+
+    return this.itemsRepository.remove(item);
+  }
 }

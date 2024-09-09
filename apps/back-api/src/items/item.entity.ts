@@ -42,4 +42,4 @@ export class Item {
   @JoinColumn({ name: 'categoryId' })
   category: Category;
 }
-// Comentar a Guru sobre este problema mandandole las entities
+// No se ve la category en GET items. Comentar a Guru sobre este problema mandandole las entities

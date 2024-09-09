@@ -27,6 +27,8 @@
 
 .description p {
   position: relative;
+  display: inline-flex;
+  column-gap: 1rem;
   margin: 0;
   padding: 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);
